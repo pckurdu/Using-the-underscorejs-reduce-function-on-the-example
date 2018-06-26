@@ -1,0 +1,59 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        
+    </head>
+    <body>
+        <input id="btn" class="btn btn-primary" value="Generate" type="submit"/>
+        <p class="alert alert-info"></p>
+        <script>
+            // var arrayString=['p','c','k','u','r','d','u'];
+
+            // var one=_.reduce(arrayString,function(memo,num){
+            //    return memo+num;
+            // })
+            // console.log('['+arrayString+']' +'--->result = '+ one);
+
+        var array=[];
+        $(document).ready(function(){
+            $("#btn").click(function(){
+        
+                setInterval(function(){ 
+                    
+                    var randomNumber = generateRandomNumber(-10, 10);
+                    array.push(randomNumber);
+
+                      var sum = _.reduce(array, function(memo, num){ 
+                        return memo + num; 
+                        }, 0);
+                        console.log(sum)  
+                        if(sum>10){
+                            alert(sum);
+                            array.splice(0,array.length);
+                        }
+                    $("p").append('['+randomNumber+']<->');
+                    }, 3000);
+
+            });
+            var randomNumber = generateRandomNumber(-60, 100);
+            function generateRandomNumber(min,max)
+            {
+                 return Math.floor(Math.random()*(max-min+1)+min);
+            }
+
+            
+        });
+        
+        
+        </script>
+
+    </body>
+</html>
+
+
+
+   
